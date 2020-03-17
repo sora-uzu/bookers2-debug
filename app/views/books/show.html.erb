@@ -1,0 +1,57 @@
+
+<div class="container"> 
+<div class="row">
+	<div class="col-xs-3">
+
+
+		<h2>User info</h2>
+		<%= render 'users/profile' %>
+
+		<h2>New book</h2>
+    <%= form_for(@newbook) do |f| %>
+       <% if @book.errors.any? %>
+       <h3><%= @book.errors.count %>errors prohibited this book from being saved:</h3>
+       <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+        <h4>Title</h4>
+        <%= f.text_field :title %>
+        <h4>Opinion</h4>
+        <%= f.text_area :body %>
+        <%= f.submit 'Create Book' %>
+        <% end %>
+
+	</div>
+
+	<div class="col-xs-9">
+		<h2>Book detail</h2>
+
+		<table class="table">
+				<tr>
+					<td>
+						<%= link_to user_path(@book.user.id) do %>
+						<%= attachment_image_tag(@book.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
+						<%= @book.user.name %>
+						<% end %>
+					</td>
+					<td><%=link_to user_path(@book.user.id) do%>
+                    <%= @user.name %>
+                    <%end%>
+                    </td>
+					<td><%= @book.title %></td>
+					<td><%= @book.body %></td>
+					<% if @user.id == current_user.id %>
+					<td><%= link_to "Edit",edit_book_path(@book), class: "btn-sm btn-success edit_book_#{@book.id}" %></td>
+					<td><%= link_to "Destroy",@book, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book.id}" %></td>
+					<%end%>
+				</tr>
+			</table>
+
+	</div>
+</div>
+
+</div>
+

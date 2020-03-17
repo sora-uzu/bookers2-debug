@@ -1,0 +1,20 @@
+current directory: /vagrant/bookers2-debug/vendor/bundle/ruby/2.5.0/gems/puma-3.12.2/ext/puma_http11
+/usr/bin/ruby2.5 -r ./siteconf20200316-8076-zqa975.rb extconf.rb
+checking for BIO_read() in -lcrypto... no
+checking for BIO_read() in -llibeay32... no
+creating Makefile
+
+current directory: /vagrant/bookers2-debug/vendor/bundle/ruby/2.5.0/gems/puma-3.12.2/ext/puma_http11
+make "DESTDIR=" clean
+
+current directory: /vagrant/bookers2-debug/vendor/bundle/ruby/2.5.0/gems/puma-3.12.2/ext/puma_http11
+make "DESTDIR="
+compiling http11_parser.c
+compiling io_buffer.c
+compiling mini_ssl.c
+compiling puma_http11.c
+linking shared-object puma/puma_http11.so
+
+current directory: /vagrant/bookers2-debug/vendor/bundle/ruby/2.5.0/gems/puma-3.12.2/ext/puma_http11
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20200316-8076-1gzub9n/puma

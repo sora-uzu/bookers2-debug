@@ -1,0 +1,16 @@
+current directory: /vagrant/bookers2-debug/vendor/bundle/ruby/2.5.0/gems/unf_ext-0.0.7.6/ext/unf_ext
+/usr/bin/ruby2.5 -r ./siteconf20200316-8076-tn8man.rb extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+current directory: /vagrant/bookers2-debug/vendor/bundle/ruby/2.5.0/gems/unf_ext-0.0.7.6/ext/unf_ext
+make "DESTDIR=" clean
+
+current directory: /vagrant/bookers2-debug/vendor/bundle/ruby/2.5.0/gems/unf_ext-0.0.7.6/ext/unf_ext
+make "DESTDIR="
+compiling unf.cc
+linking shared-object unf_ext.so
+
+current directory: /vagrant/bookers2-debug/vendor/bundle/ruby/2.5.0/gems/unf_ext-0.0.7.6/ext/unf_ext
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 unf_ext.so ./.gem.20200316-8076-1v8en1f
