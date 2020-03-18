@@ -7,6 +7,8 @@ before_action :authenticate_user!, only: [:edit,:index,:show]
     @newbook = Book.new
     @users = User.all
     @user = @book.user
+    @comment = current_user.book_comments.find_by(book_id: params[:book_id])
+    @book_comment = BookComment.new
   end
 
   def index
@@ -47,7 +49,7 @@ before_action :authenticate_user!, only: [:edit,:index,:show]
 
   def destroy
   	book = Book.find(params[:id])
-  	book.destoy
+  	book.destroy
   	redirect_to books_path, notice: "successfully delete book!"
   end
 
