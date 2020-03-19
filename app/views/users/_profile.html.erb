@@ -1,6 +1,5 @@
 <table class="table">
 		<tr><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></tr>
-
 		<tr>
 			<th>name</th>
 			<th><%= @user.name %></th>
@@ -10,6 +9,18 @@
 			<th>introduction</th>
 			<th><%= @user.introduction %></th>
 		</tr>
+
+		<tr>
+			<th>follows</th>
+			<th><a href="<%= following_user_path(@user) %>">
+			<%= @user.following.count %></th>
+	    </tr>
+
+	    <tr>
+	    	<th>followers</th>
+	    	<th><a href="<%= followers_user_path(@user) %>">
+	    	<%= @user.followers.count %></th>
+	    </tr>
 </table>
 
 <div class="row">
@@ -17,3 +28,18 @@
 	<%= link_to 'Edit',edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
 	<%end%>
 </div>
+
+<% if @user.id != current_user.id %>
+  <div id="follow_form">
+  <% if current_user.following?(@user) %>
+     <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),html: { method: :delete }) do |f| %>
+     <%= f.submit "Unfollow", class: "btn" %>
+     <% end %>
+   <% else %>
+     <%= form_for(current_user.active_relationships.build) do |f| %>
+     <div><%= hidden_field_tag :followed_id, @user.id %></div>
+     <%= f.submit "Follow", class: "btn btn-primary" %>
+     <% end %>
+  <% end %>
+  </div>
+<%end%>
