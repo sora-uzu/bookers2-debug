@@ -1,0 +1,44 @@
+<% if @model == 'user' %>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Image</th>
+			<th>Name</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
+
+    <tbody>
+		<% @datas.each do |user| %>
+		<tr>
+			<td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg" %></td>
+			<td><%= user.name%></td>
+		</tr>
+		<%end%>
+    </tbody>
+</table>
+
+<% elsif @model == 'book'%>
+
+<table class="table table-hover table-inverse">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Title</th>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @datas.each do |book| %>
+				<tr>
+					<td>
+						<%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg" %>
+					</td>
+					<td><%= book.title %></td>
+					</tr>
+					<%end%>
+			</tbody>
+</table>
+<%end%>
