@@ -1,0 +1,5 @@
+$("#comments_form").html("<%= escape_javascript(render('books/commentsform')) %>");
+
+$("#comments").html("<%= escape_javascript(render('books/comments')) %>");
+
+$("#comments_count").html('<%= @user.followers.count %>');

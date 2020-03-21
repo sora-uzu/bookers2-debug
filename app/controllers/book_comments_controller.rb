@@ -14,7 +14,9 @@ class BookCommentsController < ApplicationController
         comment.book_id = book.id
         comment.destroy
         redirect_back(fallback_location: root_path)
-	end
+   end
+    
+	
 
 	private
 	def book_comment_params

@@ -53,6 +53,8 @@ before_action :authenticate_user!, only: [:edit,:index,:show]
   	redirect_to books_path, notice: "successfully delete book!"
   end
 
+  
+
   private
 
   def book_params

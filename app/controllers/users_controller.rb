@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def index
-  	@users = User.all.search(params[:search]) #一覧表示するためにUserモデルのデータを全て変数に入れて取り出す。
+  	@users = User.all #一覧表示するためにUserモデルのデータを全て変数に入れて取り出す。
     @user = current_user
   	@book = Book.new #new bookの新規投稿で必要（保存処理はbookコントローラー側で実施）
 
