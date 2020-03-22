@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {   registrations: 'users/registrations', sessions: 'users/sessions' }
   resources :books do
   	resource :favorites, only: [:create, :destroy]
-  	resource :book_comments, only: [:create, :destroy]
+  	resources :book_comments, only: [:create, :destroy]
   end
 
   root to: 'home#top'

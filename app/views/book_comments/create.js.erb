@@ -1,5 +1,2 @@
-$("#comments_form").html("<%= escape_javascript(render('books/commentsform')) %>");
+$("#comments").html("<%= j(render partial: 'books/comments', locals: {book: @book, book_comment: @book_comment}) %>");
 
-$("#comments").html("<%= escape_javascript(render('books/comments')) %>");
-
-$("#comments_count").html('<%= book.book_comments.count %>');

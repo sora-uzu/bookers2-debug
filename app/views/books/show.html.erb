@@ -1,5 +1,5 @@
 
-<div class="container"> 
+<div class="container">
 <div class="row">
 	<div class="col-xs-3">
 
@@ -61,10 +61,8 @@
 				   </td>
 				</tr>
 			</table>
-			<%= render 'books/comments' %>
-            <%= render 'books/commentsform' %>
+			<%= render partial: 'books/comments', locals: { book: @book, book_comment: @book_comment} %>
 		</div>
-	
 	</div>
 </div>
 
