@@ -5,7 +5,14 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@books = @user.books
   	@book = Book.new #new bookの新規投稿で必要（保存処理はbookコントローラー側で実施）
-  end
+    @hash = Gmaps4rails.build_markers(@user) do |place, marker|
+      marker.lat place.latitude
+      marker.lng place.longitude
+      marker.infowindow place.name
+    end
+    # latlng = Geocoder.search(@user.city).first.coordinates
+    # @hash = {lat: latlng[0], lng: latlng[1]}
+ end
 
   def index
   	@users = User.all #一覧表示するためにUserモデルのデータを全て変数に入れて取り出す。
@@ -43,7 +50,7 @@ end
 
   private
   def user_params
-  	params.require(:user).permit(:name, :introduction, :profile_image)
+  	params.require(:user).permit(:name, :introduction, :profile_image, :latitude, :longitude)
   end
 
   #url直接防止　メソッドを自己定義してbefore_actionで発動。

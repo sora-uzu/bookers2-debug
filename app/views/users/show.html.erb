@@ -39,7 +39,22 @@
 	</tbody>
 </table>
 </div>
+<% if @user.id == current_user.id %>
+<div id="map" style="width: 600px; height: 500px;"></div>
+<script>
+
+  handler = Gmaps.build("Google");
+  handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(16);
+  });
+
+
+</script>
 </div>
+<%end%>
 </div>
 <!--books一覧 -->
 
