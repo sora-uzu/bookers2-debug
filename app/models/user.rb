@@ -26,6 +26,11 @@ class User < ApplicationRecord
   geocoded_by :city
   after_validation :geocode
 
+  after_create :send_thanks_mail
+  def send_thanks_mail
+    ThanksMailer.thanks_mail(self).deliver
+  end
+
   # ユーザーをフォローする
   def follow(other_user)
     following << other_user
